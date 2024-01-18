@@ -1,0 +1,16 @@
+<!-- todo/templates/todo/todo_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>To-Do List</h1>
+  <ul>
+    {% for todo in todos %}
+      <li>
+        {{ todo.title }} - {% if todo.completed %}Completed{% else %}Not Completed{% endif %}
+        <a href="{% url 'edit_todo' todo.id %}">Edit</a>
+        <a href="{% url 'delete_todo' todo.id %}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add_todo' %}">Add Todo</a>
+{% endblock %}
